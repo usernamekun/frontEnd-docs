@@ -12,5 +12,3 @@
 6. [环境变量](./environment-variables.md)
 7. [团队协作](./teams.md)
 8. [监控和分析](./monitoring.md)
-9. [性能优化](./performance.md)
-10. [安全配置](./security.md)
