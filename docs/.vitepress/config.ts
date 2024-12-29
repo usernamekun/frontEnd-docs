@@ -15,7 +15,7 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/docker/': [
+      '/docker/getting-started/': [
         {
           text: 'Docker',
           items: [
