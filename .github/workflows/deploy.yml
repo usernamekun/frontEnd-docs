@@ -1,0 +1,69 @@
+# 工作流名称：部署到 Gitee Pages
+name: Deploy to Gitee Pages
+
+# 触发条件：当 main 分支有 push 操作时触发
+on:
+  push:
+    branches: [main]
+
+# 工作流任务
+jobs:
+  # 任务名称：构建并部署
+  build-and-deploy:
+    # 运行环境：最新版 Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤1：检出代码
+      - uses: actions/checkout@v3
+
+      # 步骤2：设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # 步骤3：安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # 指定 pnpm 版本
+
+      # 步骤4：获取 pnpm store 目录
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+        id: pnpm-cache
+
+      # 步骤5：设置缓存
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      # 步骤6：安装依赖
+      - name: Install dependencies
+        run: pnpm install
+
+      # 步骤7：构建
+      - name: Build
+        run: pnpm docs:build
+
+      # 步骤8：部署到 Gitee Pages
+      - name: Deploy to Gitee
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          # Gitee 用户名，从 GitHub Secrets 中获取
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          # Gitee 密码，从 GitHub Secrets 中获取
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          # Gitee 仓库名，格式：用户名/仓库名
+          gitee-repo: YOUR_USERNAME/unocss-docs
+          # 要部署的分支
+          branch: gh-pages
+          # 要部署的文件夹，这里是 VitePress 构建输出目录
+          directory: docs/.vitepress/dist
