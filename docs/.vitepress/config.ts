@@ -7,15 +7,15 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: 'Docker', link: '/docker/' },
+      { text: 'Docker', link: '/docker/getting-started/' },
       { text: 'UnoCSS', link: '/unocss/' },
       { text: 'Vercel', link: '/vercel/' },
-      { text: '部署', link: '/deploy/' },
+      { text: '部署', link: '/deploy/vercel-deploy/' },
       { text: 'Gitee', link: 'https://gitee.com/YOUR_USERNAME/docs' }
     ],
 
     sidebar: {
-      '/docker/getting-started/': [
+      '/docker/': [
         {
           text: 'Docker',
           items: [
@@ -64,7 +64,7 @@ export default defineConfig({
           ]
         }
       ],
-      '/deploy/vercel-deploy/': [
+      '/deploy/': [
         {
           text: '部署指南',
           items: [
