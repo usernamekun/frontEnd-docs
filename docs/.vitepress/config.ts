@@ -64,7 +64,7 @@ export default defineConfig({
           ]
         }
       ],
-      '/deploy/': [
+      '/deploy/vercel-deploy/': [
         {
           text: '部署指南',
           items: [
