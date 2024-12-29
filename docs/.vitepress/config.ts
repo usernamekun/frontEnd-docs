@@ -28,6 +28,12 @@ export default defineConfig({
           { text: '工具链', link: '/tooling' },
           { text: '最佳实践', link: '/best-practices' }
         ]
+      },
+      {
+        text: '部署指南',
+        items: [
+          { text: 'Vercel部署', link: '/deploy/vercel-deploy' }
+        ]
       }
     ],
 

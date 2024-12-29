@@ -47,4 +47,3 @@ jobs:
           vercel-project-id: ${{ secrets.PROJECT_ID }}
           # 工作目录
           working-directory: ./
-# 6YMCD6MQHjofdIxzpoNV32Di
