@@ -177,6 +177,33 @@ export default defineConfig({
             { text: 'useMemo 使用指南', link: '/react/hooks/useMemo-guide' }
           ]
         }
+      ],
+      '/git/': [
+        {
+          text: 'Git 基础',
+          items: [
+            { text: '快速开始', link: '/git/getting-started' },
+            { text: '基本操作', link: '/git/basic-operations' },
+            { text: '分支管理', link: '/git/branch-management' }
+          ]
+        },
+        {
+          text: 'Git 进阶',
+          items: [
+            { text: '线性提交历史', link: '/git/linear-history' },
+            { text: 'Rebase 详解', link: '/git/rebase-guide' },
+            { text: '工作流规范', link: '/git/workflow' },
+            { text: '冲突处理', link: '/git/conflict-resolution' }
+          ]
+        },
+        {
+          text: 'Git 最佳实践',
+          items: [
+            { text: '团队协作规范', link: '/git/team-collaboration' },
+            { text: 'Git Hooks', link: '/git/hooks' },
+            { text: 'CI/CD 集成', link: '/git/ci-cd' }
+          ]
+        }
       ]
     },
 
