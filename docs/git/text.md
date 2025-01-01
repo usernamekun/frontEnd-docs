@@ -4,7 +4,3 @@ f
 a
 
 # merge
-
-rebase
-sss
-aaaa
